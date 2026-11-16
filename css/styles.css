@@ -1,0 +1,199 @@
+/* Custom styles for LUMINA Luxury Restaurant Demo */
+
+:root {
+  --bg-primary: #0b0c0e;
+  --bg-secondary: #131518;
+  --bg-card: #181b1f;
+  --bg-card-hover: #1f2328;
+  --gold-primary: #d4af37;
+  --gold-light: #f3e5ab;
+  --gold-dark: #aa8620;
+  --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8620 100%);
+  --text-main: #f4f4f6;
+  --text-muted: #9ba1a6;
+  --border-subtle: rgba(212, 175, 55, 0.15);
+  --border-card: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0c0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #282c34;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Gold Text Gradient */
+.gold-text-gradient {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass effect */
+.glass-panel {
+  background: rgba(19, 21, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-card);
+}
+
+.glass-panel-gold {
+  background: rgba(24, 27, 31, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Card hover animation */
+.dish-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.dish-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.7), 0 0 15px 1px rgba(212, 175, 55, 0.12);
+}
+
+/* Image zoom inside cards */
+.dish-card:hover .dish-img {
+  transform: scale(1.06);
+}
+.dish-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Hero Background Overlay */
+.hero-bg {
+  background: linear-gradient(180deg, rgba(11, 12, 14, 0.45) 0%, rgba(11, 12, 14, 0.85) 75%, #0b0c0e 100%),
+              url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+}
+
+/* Atmosphere Gallery Grid Effects */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+.gallery-item img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+.gallery-item .overlay {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+/* Cart & Reservation Drawer animation */
+.drawer-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.drawer-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.drawer-panel.active {
+  transform: translateX(0);
+}
+
+/* Pulse animation for Live status pill */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.status-dot {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+/* Toast Notification */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+.toast-msg {
+  pointer-events: auto;
+  animation: toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Shimmer highlight */
+.gold-badge {
+  background: linear-gradient(90deg, rgba(212,175,55,0.12), rgba(212,175,55,0.22), rgba(212,175,55,0.12));
+  border: 1px solid rgba(212,175,55,0.3);
+  color: #f3e5ab;
+}
+
+/* Luxury button styling */
+.btn-gold {
+  background: var(--gold-gradient);
+  color: #0b0c0e;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+}
+.btn-gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-outline-gold {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #f3e5ab;
+  transition: all 0.3s ease;
+}
+.btn-outline-gold:hover {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
